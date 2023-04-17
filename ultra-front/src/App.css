@@ -1,8 +1,8 @@
-.container {
+.container-item {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
+  align-items: center ;
   height: 100vh;
 }
 
@@ -15,4 +15,9 @@
   padding: 8px;
   outline: none;
   border: 1px solid #b6b6b6;
+}
+
+p {
+  text-align: center;
+  color: rgb(50, 124, 209);
 }

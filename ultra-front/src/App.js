@@ -1,39 +1,19 @@
-import QRCode from 'react-qr-code';
-import DownloadQRCode from 'qrcode';
-import { useState } from 'react';
-import './App.css';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import NotFound from './pages/NotFound';
+import Home from './pages/Home';
+import Client from './pages/Client';
+import UltracarProvider from './context/UltracarProvider';
 
 function App() {
-  const [link, setLink] = useState('');
-  const [downQrCode, setDownQrCode] = useState('');
-
-  function handleDownloadQRCode(link_url) {
-    DownloadQRCode.toDataURL(link_url, {
-      width: 600,
-      margin: 3
-    }, (err, url) => {
-      setDownQrCode(url);
-    });
-  }
-
-  function handleQRCode(e) {
-    setLink(e.target.value);
-    handleDownloadQRCode(e.target.value);
-  }
   return (
-    <div className="container">
-      <QRCode
-        value={link}
-      />
-      <input
-        className="input"
-        placeholder="Digite seu link"
-        value={link}
-        onChange={(e) => handleQRCode(e)}
-       />
-
-       <a href={downQrCode} download={`qrcode.png`}>Baixar QrCode</a>
-    </div>
+    <UltracarProvider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path={"/client"} element={<Client />} />
+        <Route path="/404" element={<NotFound />} />
+        <Route path="*" element={<Navigate replace to="/404" />} />
+      </Routes>
+    </UltracarProvider>
   );
 }
 
