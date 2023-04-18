@@ -17,31 +17,36 @@ function Home() {
   return (
     <>
       <Navbar />
-    <Grid
-      container
-      justifyContent='center'
-      alignSelf='center'
-    >
-      <Grid item >
-        <div className='container-item'>
-          <TextField
-            className='input'
-            helperText='digite o nome do cliente'
-            label='cliente'
-            variant='outlined'
-            value={ `${link}` }
-            onChange={(e) => handleQRCode(e)}
-          />
-          <Stack spacing={2} direction='row'>
-            <Button variant='outlined' onClick={Consult}>Consultar</Button>
-          </Stack>
-          <Grid item>
-            <p>Ou acesse o QrCode</p>
-            <QRCode value={`http://localhost:3000/client`}/>
-          </Grid>
-        </div>
-      </Grid>  
-    </Grid>
+      <Grid
+        container
+        component='form'
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Grid item p={4} >
+            <TextField
+              helperText='digite o nome do cliente'
+              label='cliente'
+              variant='outlined'
+              value={ `${link}` }
+              onChange={(e) => handleQRCode(e)}
+              
+            />
+            <Stack
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              spacing={2}
+            >
+              <Button variant='outlined' onClick={Consult}>Consultar</Button>
+            </Stack>
+            <Grid item>
+              <p>Ou acesse o QrCode</p>
+              <QRCode value={`http://localhost:3000/client`}/>
+            </Grid>
+        </Grid>  
+      </Grid>
     </>
   );
 }

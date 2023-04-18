@@ -12,10 +12,14 @@ const StyledAvatar = styled(Avatar)(({ theme }) => ({
 
 const NavBar = () => {
   return (
-    <AppBar position="static" sx={{ backgroundColor: 'rgb(105, 156, 214)' }}>
+    <AppBar position="static" sx={{ backgroundColor: 'rgb(105, 156, 214)'}}>
       <Toolbar>
         <StyledAvatar alt="Avatar" src="/cabecalho.png" />
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1, marginLeft: '10px' }}>
+        <Typography
+          variant="h5"
+          component="div"
+          sx={{ flexGrow: 1, marginLeft: '10px', fontWeight: '500'}}
+        >
           Ultracar
         </Typography>
       </Toolbar>

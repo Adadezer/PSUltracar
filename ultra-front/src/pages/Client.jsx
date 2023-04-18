@@ -7,10 +7,7 @@ import NavBar from '../components/NavBar';
 
 function Client() {
   const { link } = useContext(UltracarContext);
-  const [fields, setFields] = useState({
-    funcionario: '',
-    servico: '',
-  });
+  const [collaborator, setCollaborator] = useState('');
   const [selectedService, setSelectedService] = useState('');
   const [mechanicalServices] = useState([
     { name: 'Troca de óleo', part: '1l de Óleo',  price: '35,00' },
@@ -18,9 +15,8 @@ function Client() {
     { name: 'Troca Correia Dentada', part: 'Correia Dentada', price: '100,00'}
   ]);
 
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setFields({...fields, [name]: value});
+  function handleCollaborator(e) {
+    setCollaborator(e.target.value);
   }
 
   const handleServiceSelect = (e) => {
@@ -59,10 +55,9 @@ function Client() {
         <Grid item >
           <TextField
             helperText='digite quem será o responsável pelo serviço'
-            label='funcionário'
-            name='funcionario'
-            value={ `${fields.funcionario}` }
-            onChange={(e) => handleChange(e)}
+            label='colaborador'
+            value={ `${collaborator}` }
+            onChange={(e) => handleCollaborator(e)}
             variant='outlined'
           />
         </Grid>
@@ -80,12 +75,12 @@ function Client() {
         <Grid item>
           <TextField
             select
+            helperText='selecione um serviço'
             value={selectedService}
             onChange={handleServiceSelect}
             label='Serviço'
             variant='outlined'
           >
-            <MenuItem value="">Selecione um serviço</MenuItem>
             {mechanicalServices.map((service) => (
               <MenuItem key={service.name} value={service.name}>
                 {service.name}
