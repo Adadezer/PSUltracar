@@ -3,10 +3,13 @@ import UltracarContext from './UltracarContext';
 
 export default function UltracarProvider({ children }) {
   const [link, setLink] = useState('');
+  const [isFieldInvalid, setIsFieldInvalid] = useState(true);
 
   const myContext = {
     link,
     setLink,
+    isFieldInvalid,
+    setIsFieldInvalid
   };
 
   return (

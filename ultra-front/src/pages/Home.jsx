@@ -5,14 +5,23 @@ import '../App.css';
 import UltracarContext from '../context/UltracarContext';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/NavBar';
+import schemaValidations from '../helpers/schemaValidations';
 
 function Home() {
-  const { link, setLink } = useContext(UltracarContext);
+  const { link, setLink, isFieldInvalid, setIsFieldInvalid } = useContext(UltracarContext);
   const navigate = useNavigate();
   const Consult = () => navigate('/client');
-
+  
   function handleQRCode(e) {
     setLink(`${e.target.value}`);
+    
+    const schemaValidate = schemaValidations.name().validate(e.target.value);
+
+    if (schemaValidate.error) {
+      setIsFieldInvalid(true);
+    } else {
+      setIsFieldInvalid(false);
+    }
   }
   return (
     <>
@@ -31,7 +40,7 @@ function Home() {
               variant='outlined'
               value={ `${link}` }
               onChange={(e) => handleQRCode(e)}
-              
+              error={isFieldInvalid}
             />
             <Stack
               direction='column'
