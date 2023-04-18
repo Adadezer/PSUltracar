@@ -11,8 +11,8 @@ function Client() {
   const [selectedService, setSelectedService] = useState('');
   const [mechanicalServices] = useState([
     { name: 'Troca de óleo', part: '1l de Óleo',  price: '35,00' },
-    { name: 'Troca vela', part: 'Kit de velas', price: '95,00' },
-    { name: 'Troca Correia Dentada', part: 'Correia Dentada', price: '100,00'}
+    { name: 'Troca de vela', part: 'Kit de velas', price: '95,00' },
+    { name: 'Troca da Correia Dentada', part: 'Correia Dentada', price: '100,00'}
   ]);
 
   function handleCollaborator(e) {
@@ -31,9 +31,9 @@ function Client() {
       <Grid
         container
         component='form'
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
+        direction='row'
+        justifyContent='center'
+        alignItems='center'
       >
         <Grid item className='info'm={2} p={1}>
           <label>Cliente:</label>
@@ -48,9 +48,9 @@ function Client() {
       <Grid
         container
         component='form'
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
+        direction='row'
+        justifyContent='center'
+        alignItems='center'
       >
         <Grid item >
           <TextField
@@ -66,9 +66,9 @@ function Client() {
       <Grid
         container
         component='form'
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
+        direction='column'
+        justifyContent='center'
+        alignItems='center'
         className='service'
       >
         <h4>Serviço:</h4>
@@ -88,12 +88,12 @@ function Client() {
             ))}
           </TextField>
           <TextField
-            label="Peça"
+            label='Peça'
             value={selectedServiceData ? selectedServiceData.part : ''}
             disabled={!selectedServiceData}
           />
           <TextField
-            label="Preço"
+            label='Preço'
             value={selectedServiceData ? selectedServiceData.price : ''}
             disabled={!selectedServiceData}
           />
@@ -103,7 +103,7 @@ function Client() {
       <Grid
         container
         component='form'
-        justifyContent="center"
+        justifyContent='center'
         className='dateTime'
       >
         <Grid item>

@@ -20,9 +20,9 @@ function Home() {
       <Grid
         container
         component='form'
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
+        direction='row'
+        justifyContent='center'
+        alignItems='center'
       >
         <Grid item p={4} >
             <TextField
@@ -34,9 +34,9 @@ function Home() {
               
             />
             <Stack
-              direction="column"
-              justifyContent="center"
-              alignItems="center"
+              direction='column'
+              justifyContent='center'
+              alignItems='center'
               spacing={2}
             >
               <Button variant='outlined' onClick={Consult}>Consultar</Button>
