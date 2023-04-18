@@ -41,6 +41,7 @@ function Home() {
               value={ `${link}` }
               onChange={(e) => handleQRCode(e)}
               error={isFieldInvalid}
+              required
             />
             <Stack
               direction='column'

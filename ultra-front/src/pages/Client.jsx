@@ -7,7 +7,7 @@ import NavBar from '../components/NavBar';
 import schemaValidations from '../helpers/schemaValidations';
 
 function Client() {
-  const { link, isFieldInvalid, setIsFieldInvalid  } = useContext(UltracarContext);
+  const { link, isCollaboratorInvalid, setIsCollaboratorInvalid  } = useContext(UltracarContext);
   const [collaborator, setCollaborator] = useState('');
   const [selectedService, setSelectedService] = useState('');
   const [mechanicalServices] = useState([
@@ -19,12 +19,12 @@ function Client() {
   function handleCollaborator(e) {
     setCollaborator(e.target.value);
 
-    const schemaValidate = schemaValidations.name().validate(e.target.value);
+    const schemaValidate = schemaValidations.collaborator().validate(e.target.value);
 
     if (schemaValidate.error) {
-      setIsFieldInvalid(true);
+      setIsCollaboratorInvalid(true);
     } else {
-      setIsFieldInvalid(false);
+      setIsCollaboratorInvalid(false);
     }
   }
 
@@ -67,7 +67,8 @@ function Client() {
             label='colaborador'
             value={ `${collaborator}` }
             onChange={(e) => handleCollaborator(e)}
-            error={isFieldInvalid}
+            error={isCollaboratorInvalid}
+            required
             variant='outlined'
           />
         </Grid>
@@ -118,10 +119,10 @@ function Client() {
       >
         <Grid item>
           <h4>Início do serviço:</h4>
-          <DateTime />
+          <DateTime schemaName="dateStart"/>
 
           <h4>término do serviço:</h4>
-          <DateTime />
+          <DateTime schemaName="dateEnd"/>
         </Grid>
       </Grid>
     </>

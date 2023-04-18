@@ -1,12 +1,22 @@
 import { Grid, TextField } from '@mui/material';
 import { useState } from 'react';
+import schemaValidations from '../helpers/schemaValidations';
 
-function DateTimeInput() {
+function DateTimeInput({ schemaName }) {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState(new Date().toLocaleTimeString());
+  const [isDataInvalid, setIsDataInvalid ] = useState(true);
 
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
+
+    const schemaValidate = schemaValidations[schemaName]().validate(event.target.value);
+
+    if (schemaValidate.error) {
+      setIsDataInvalid(true);
+    } else {
+      setIsDataInvalid(false);
+    }
   };
 
   const handleTimeChange = (event) => {
@@ -22,6 +32,8 @@ function DateTimeInput() {
           type="date"
           value={selectedDate}
           onChange={handleDateChange}
+          error={isDataInvalid}
+          required
           InputLabelProps={{
             shrink: true,
           }}
