@@ -14,8 +14,8 @@ function DateTimeInput() {
   };
 
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={2}>
+    <Grid container>
+      <Grid item>
         <TextField
           id="date"
           label="Data"
@@ -27,7 +27,7 @@ function DateTimeInput() {
           }}
         />
       </Grid>
-      <Grid item xs={1}>
+      <Grid item>
         <TextField
           id="time"
           label="Hora"

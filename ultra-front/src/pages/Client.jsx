@@ -33,23 +33,29 @@ function Client() {
       <Grid
         container
         component='form'
-        spacing={1}
-        p={1}
-        m={1}
         direction="row"
-        justifyContent="flex-start"
+        justifyContent="center"
         alignItems="center"
       >
-        <Grid item>
-          <h2>{`Cliente: ${link}`}</h2>
+        <Grid item className='info'm={2} p={1}>
+          <label>Cliente:</label>
+          <h2>{`${link}`}</h2>
         </Grid>
-        <Grid item>
-          <h2>Carro: Corolla</h2>
+        <Grid item className='info'm={2} p={1}>
+          <label>Carro:</label>
+          <h2>Corolla</h2>
         </Grid>
-        
-        <Grid item>
+      </Grid>
+
+      <Grid
+        container
+        component='form'
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Grid item >
           <TextField
-            className='input'
             helperText='digite quem será o responsável pelo serviço'
             label='funcionário'
             name='funcionario'
@@ -60,8 +66,16 @@ function Client() {
         </Grid>
       </Grid>
       
-      <Grid container component='form' spacing={1} p={1} m={1}>
-        <Grid item xs={2}>
+      <Grid
+        container
+        component='form'
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        className='service'
+      >
+        <h4>Serviço:</h4>
+        <Grid item>
           <TextField
             select
             value={selectedService}
@@ -87,11 +101,19 @@ function Client() {
             disabled={!selectedServiceData}
           />
         </Grid>
+      </Grid>
+        
+      <Grid
+        container
+        component='form'
+        justifyContent="center"
+        className='dateTime'
+      >
         <Grid item>
-          <div>Data e hora do início do serviço</div>
+          <h4>Início do serviço:</h4>
           <DateTime />
 
-          <div>Data e hora do término do serviço</div>
+          <h4>término do serviço:</h4>
           <DateTime />
         </Grid>
       </Grid>

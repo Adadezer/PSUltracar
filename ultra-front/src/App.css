@@ -21,3 +21,25 @@ p {
   text-align: center;
   color: rgb(50, 124, 209);
 }
+
+.info {
+  border-radius: 10px;
+  border: 1px solid rgba(136, 191, 255, 0.616);
+  text-align: center;
+  font-size: small;
+}
+
+.info h2 {
+  color: rgb(138, 138, 138);
+}
+
+.dateTime, .service {
+  padding: 15px;
+  align-items: center;
+  text-align: center;
+}
+
+.dateTime h4, .service h4 {
+  margin: 10px;
+  color: rgb(136, 191, 255);
+}
