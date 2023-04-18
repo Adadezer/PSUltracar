@@ -3,13 +3,11 @@ import '../App.css';
 import { useContext, useState } from 'react';
 import UltracarContext from '../context/UltracarContext';
 import DateTime from '../components/DateTime';
+import NavBar from '../components/NavBar';
 
 function Client() {
   const { link } = useContext(UltracarContext);
-  const [fields, setFields] = useState({
-    funcionario: '',
-    servico: '',
-  });
+  const [collaborator, setCollaborator] = useState('');
   const [selectedService, setSelectedService] = useState('');
   const [mechanicalServices] = useState([
     { name: 'Troca de óleo', part: '1l de Óleo',  price: '35,00' },
@@ -17,9 +15,8 @@ function Client() {
     { name: 'Troca Correia Dentada', part: 'Correia Dentada', price: '100,00'}
   ]);
 
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setFields({...fields, [name]: value});
+  function handleCollaborator(e) {
+    setCollaborator(e.target.value);
   }
 
   const handleServiceSelect = (e) => {
@@ -30,46 +27,60 @@ function Client() {
 
   return (
     <>
+      <NavBar />
       <Grid
         container
         component='form'
-        spacing={1}
-        p={1}
-        m={1}
         direction="row"
-        justifyContent="flex-start"
+        justifyContent="center"
         alignItems="center"
       >
-        <Grid item>
-          <h2>{`Cliente: ${link}`}</h2>
+        <Grid item className='info'm={2} p={1}>
+          <label>Cliente:</label>
+          <h2>{`${link}`}</h2>
         </Grid>
-        <Grid item>
-          <h2>Carro: Corolla</h2>
+        <Grid item className='info'm={2} p={1}>
+          <label>Carro:</label>
+          <h2>Corolla</h2>
         </Grid>
-        
-        <Grid item>
+      </Grid>
+
+      <Grid
+        container
+        component='form'
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Grid item >
           <TextField
-            className='input'
             helperText='digite quem será o responsável pelo serviço'
-            label='funcionário'
-            name='funcionario'
-            value={ `${fields.funcionario}` }
-            onChange={(e) => handleChange(e)}
+            label='colaborador'
+            value={ `${collaborator}` }
+            onChange={(e) => handleCollaborator(e)}
             variant='outlined'
           />
         </Grid>
       </Grid>
       
-      <Grid container component='form' spacing={1} p={1} m={1}>
-        <Grid item xs={2}>
+      <Grid
+        container
+        component='form'
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        className='service'
+      >
+        <h4>Serviço:</h4>
+        <Grid item>
           <TextField
             select
+            helperText='selecione um serviço'
             value={selectedService}
             onChange={handleServiceSelect}
             label='Serviço'
             variant='outlined'
           >
-            <MenuItem value="">Selecione um serviço</MenuItem>
             {mechanicalServices.map((service) => (
               <MenuItem key={service.name} value={service.name}>
                 {service.name}
@@ -87,11 +98,19 @@ function Client() {
             disabled={!selectedServiceData}
           />
         </Grid>
+      </Grid>
+        
+      <Grid
+        container
+        component='form'
+        justifyContent="center"
+        className='dateTime'
+      >
         <Grid item>
-          <div>Data e hora do início do serviço</div>
+          <h4>Início do serviço:</h4>
           <DateTime />
 
-          <div>Data e hora do término do serviço</div>
+          <h4>término do serviço:</h4>
           <DateTime />
         </Grid>
       </Grid>

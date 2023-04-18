@@ -1,23 +1,30 @@
-.container-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center ;
-  height: 100vh;
-}
-
-.input{
-  height: 38px;
-  border-radius: 8px;
-  max-width: 300px;
-  width: 100%;
-  margin: 24px 0;
-  padding: 8px;
-  outline: none;
-  border: 1px solid #b6b6b6;
-}
-
 p {
   text-align: center;
   color: rgb(50, 124, 209);
+}
+
+.info {
+  border-radius: 10px;
+  border: 1px solid rgba(136, 191, 255, 0.616);
+  text-align: center;
+  font-size: small;
+}
+
+.info h2 {
+  color: rgb(138, 138, 138);
+}
+
+.dateTime, .service {
+  padding: 10px;
+  align-items: center;
+  text-align: center;
+}
+
+.dateTime {
+  padding: 0;
+}
+
+.dateTime h4, .service h4 {
+  margin: 10px;
+  color: rgb(136, 191, 255);
 }
