@@ -2,6 +2,7 @@ import { Grid, TextField, MenuItem } from '@mui/material';
 import '../App.css';
 import { useContext, useState } from 'react';
 import UltracarContext from '../context/UltracarContext';
+import DateTime from '../components/DateTime';
 
 function Client() {
   const { link } = useContext(UltracarContext);
@@ -29,10 +30,21 @@ function Client() {
 
   return (
     <>
-      <Grid container component='form' spacing={1} p={1} m={1}>
+      <Grid
+        container
+        component='form'
+        spacing={1}
+        p={1}
+        m={1}
+        direction="row"
+        justifyContent="flex-start"
+        alignItems="center"
+      >
         <Grid item>
-          <h3>{`Cliente: ${link}`}</h3>
-          <h3>Carro: Corolla</h3>
+          <h2>{`Cliente: ${link}`}</h2>
+        </Grid>
+        <Grid item>
+          <h2>Carro: Corolla</h2>
         </Grid>
         
         <Grid item>
@@ -57,7 +69,7 @@ function Client() {
             label='Serviço'
             variant='outlined'
           >
-            <MenuItem value="sdfsdf">Selecione um serviço</MenuItem>
+            <MenuItem value="">Selecione um serviço</MenuItem>
             {mechanicalServices.map((service) => (
               <MenuItem key={service.name} value={service.name}>
                 {service.name}
@@ -74,6 +86,13 @@ function Client() {
             value={selectedServiceData ? selectedServiceData.price : ''}
             disabled={!selectedServiceData}
           />
+        </Grid>
+        <Grid item>
+          <div>Data e hora do início do serviço</div>
+          <DateTime />
+
+          <div>Data e hora do término do serviço</div>
+          <DateTime />
         </Grid>
       </Grid>
     </>
