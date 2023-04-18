@@ -3,6 +3,7 @@ import '../App.css';
 import { useContext, useState } from 'react';
 import UltracarContext from '../context/UltracarContext';
 import DateTime from '../components/DateTime';
+import NavBar from '../components/NavBar';
 
 function Client() {
   const { link } = useContext(UltracarContext);
@@ -30,6 +31,7 @@ function Client() {
 
   return (
     <>
+      <NavBar />
       <Grid
         container
         component='form'

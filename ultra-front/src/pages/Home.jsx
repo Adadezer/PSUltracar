@@ -4,6 +4,7 @@ import { Grid, TextField, Stack, Button } from '@mui/material';
 import '../App.css';
 import UltracarContext from '../context/UltracarContext';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/NavBar';
 
 function Home() {
   const { link, setLink } = useContext(UltracarContext);
@@ -14,6 +15,8 @@ function Home() {
     setLink(`${e.target.value}`);
   }
   return (
+    <>
+      <Navbar />
     <Grid
       container
       justifyContent='center'
@@ -39,6 +42,7 @@ function Home() {
         </div>
       </Grid>  
     </Grid>
+    </>
   );
 }
 
